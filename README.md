@@ -35,4 +35,4 @@ pxls1 [-h|-v] <JSONファイルのあるパス> <出力するExcelファイル>
 
 # 参考
 
-[はじめに · Excelize ドキュメンテーション](https://xuri.me/excelize/ja/)
+- [はじめに · Excelize ドキュメンテーション](https://xuri.me/excelize/ja/)
