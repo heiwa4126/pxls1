@@ -18,13 +18,14 @@ Excelファイルを作るツール
 
 # インストール
 
-releaseから`pxls1`をダウンロードして、適当な場所に置く。
+ここの[最新リリース](https://github.com/heiwa4126/pxls1/releases)から
+`pxls1_linux_x86_64.tar.gz`をダウンロードして、展開してください。
 
 go 1.14以上がインストールされていれば
 ```sh
-go install github.com/heiwa4126/pxls1
+GO111MODULE=on go get -u github.com/heiwa4126/pxls1
 ```
-でもOK
+でもOK(-vオプションのバージョン表記がおかしくなるけど)
 
 # 使い方
 
