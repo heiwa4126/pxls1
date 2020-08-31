@@ -17,34 +17,22 @@ var (
 
 func main() {
 
-	// parse command line
+	jsonPath, outFile, ymlfmt := lib.ParseCli(Version, Revision)
+	var err error
 
-	jsonPath := "./testdata/1"
-	excelFile := "./Book1.xlsx"
-
-	if len(os.Args) >= 2 {
-		jsonPath = os.Args[1]
-	}
-	if len(os.Args) >= 3 {
-		excelFile = os.Args[2]
-	}
-
-	switch jsonPath {
-	case "-v":
-		fmt.Printf("pxls1 %s (%s)\n", Version, Revision)
-		os.Exit(2)
-	case "-h":
-		fmt.Printf("usage:\n\tpxls1 [-h|-v] <JSON files directory> <output Excel file>\n")
-		os.Exit(2)
+	if ymlfmt {
+		// `-y` mode
+		fmt.Fprintf(os.Stderr, "JSONPath=%s, ExcelFile=%s\n", jsonPath, outFile)
+		err = lib.Run(jsonPath, outFile)
+	} else {
+		// normal mode
+		fmt.Fprintf(os.Stderr, "JSONPath=%s, ExcelFile=%s\n", jsonPath, outFile)
+		err = lib.Run(jsonPath, outFile)
 	}
 
-	// main
-	fmt.Fprintf(os.Stderr, "JSONPath=%s, ExcelFile=%s\n", jsonPath, excelFile)
-
-	err := lib.Run(jsonPath, excelFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Fprintf(os.Stderr, "completed.\n")
+	fmt.Fprintf(os.Stderr, "convert completed.\n")
 }
