@@ -1,14 +1,13 @@
 package lib
 
 import (
-	"path"
 	"path/filepath"
 	"sort"
 	"strings"
 )
 
 func stem(path1 string) string {
-	base := path.Base(path1)
+	base := filepath.Base(path1)
 	return strings.TrimSuffix(base, filepath.Ext(base))
 }
 
