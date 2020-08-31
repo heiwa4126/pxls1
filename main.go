@@ -23,7 +23,7 @@ func main() {
 	if ymlfmt {
 		// `-y` mode
 		fmt.Fprintf(os.Stderr, "JSONPath=%s, ExcelFile=%s\n", jsonPath, outFile)
-		err = lib.Run(jsonPath, outFile)
+		err = lib.RunYAML(jsonPath, outFile)
 	} else {
 		// normal mode
 		fmt.Fprintf(os.Stderr, "JSONPath=%s, ExcelFile=%s\n", jsonPath, outFile)
