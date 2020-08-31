@@ -18,7 +18,9 @@ func ParseCli(ver string, rev string) (string, string, bool) {
 Usage:
  pxls1 [JSON files directory] [output Excel file]
  pxls1 -y [JSON files directory] [output update db file (YAML)]
- pxls1 [flags]`)
+ pxls1 [flags]
+
+flags:`)
 		flag.PrintDefaults()
 	}
 
