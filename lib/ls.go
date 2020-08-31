@@ -2,7 +2,6 @@ package lib
 
 import (
 	"path/filepath"
-	"sort"
 	"strings"
 )
 
@@ -30,7 +29,5 @@ func Ls(searchPath string) ([]string, error) {
 		hosts[i] = stem(v)
 	}
 
-	sort.Slice(hosts, func(i, j int) bool { return strings.ToLower(hosts[i]) < strings.ToLower(hosts[j]) })
-
-	return hosts, nil
+	return isort(hosts), nil
 }

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"io"
 	"os"
-	"sort"
 	"strings"
 )
 
@@ -41,9 +40,6 @@ func ReadJSON(jsonFile string) ([]string, error) {
 	}
 	m = m[0:j]
 
-	// sort ignore-case
-	sort.Slice(m, func(i, j int) bool { return strings.ToLower(m[i]) < strings.ToLower(m[j]) })
-
 	// all over
-	return m, nil
+	return isort(m), nil
 }
