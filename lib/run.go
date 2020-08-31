@@ -18,17 +18,13 @@ func Run(jsonDir string, excelFile string) error {
 	e1 := NewExcel1()
 
 	for _, host := range hosts {
-		pacs, err2 := ReadJSON(Host2File(host, jsonDir))
+		pkgs, err2 := ReadJSON(Host2File(host, jsonDir))
 		if err2 != nil {
 			return err2
 		}
-		e1.AddHost(host, pacs)
+		e1.AddHost(host, pkgs)
 	}
 
 	// write Excel file
-	if err = e1.Finish(excelFile); err != nil {
-		return err
-	}
-
-	return nil
+	return e1.Finish(excelFile)
 }

@@ -10,9 +10,10 @@ type Excel1 struct {
 	f *excelize.File
 }
 
+// a little bit wordy...
+
 func NewExcel1() *Excel1 {
-	e1 := Excel1{excelize.NewFile()}
-	return &e1
+	return &Excel1{excelize.NewFile()}
 }
 
 func (e1 *Excel1) AddHost(host string, packages []string) {

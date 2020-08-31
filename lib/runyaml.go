@@ -23,11 +23,11 @@ func RunYAML(jsonDir string, yamlFile string) error {
 	m := make(map[string][]string, len(hosts))
 
 	for _, host := range hosts {
-		pacs, err2 := ReadJSON(Host2File(host, jsonDir))
+		pkgs, err2 := ReadJSON(Host2File(host, jsonDir))
 		if err2 != nil {
 			return err2
 		}
-		m[host] = pacs
+		m[host] = pkgs
 	}
 
 	// object to YAML
