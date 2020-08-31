@@ -29,3 +29,14 @@ func TestReadJSON1(t *testing.T) {
 		t.Fatalf("wrong order")
 	}
 }
+
+func TestReadJSON2(t *testing.T) {
+	rc, err := ReadJSON("../testdata/1/c7.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if len(rc) != 0 {
+		t.Fatalf("filtering failed")
+	}
+}

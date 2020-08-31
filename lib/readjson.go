@@ -26,10 +26,20 @@ func ReadJSON(jsonFile string) ([]string, error) {
 		return nil, err
 	}
 
-	// remove "Downloaded: "
-	for i, v := range m {
-		m[i] = v[12:]
+	// 空だったらすぐ終わり
+	if len(m) == 0 {
+		return m, nil
 	}
+
+	j := 0
+	// remove "Downloaded: "
+	for _, v := range m {
+		if strings.Index(v, "Downloaded: ") == 0 {
+			m[j] = v[12:]
+			j++
+		}
+	}
+	m = m[0:j]
 
 	// sort ignore-case
 	sort.Slice(m, func(i, j int) bool { return strings.ToLower(m[i]) < strings.ToLower(m[j]) })

@@ -19,7 +19,7 @@ func TestLsErr1(t *testing.T) {
 }
 
 func TestLs1(t *testing.T) {
-	wants := []string{"host1", "R8"}
+	wants := []string{"c7", "host1", "R8"}
 	rc, err := Ls("../testdata/1")
 
 	if err != nil {
