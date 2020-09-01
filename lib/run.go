@@ -18,7 +18,7 @@ func Run(jsonDir string, excelFile string) error {
 	e1 := NewExcel1()
 
 	for _, host := range hosts {
-		pkgs, err2 := ReadJSON(Host2File(host, jsonDir))
+		pkgs, err2 := ReadJSON7(Host2File(host, jsonDir))
 		if err2 != nil {
 			return err2
 		}
