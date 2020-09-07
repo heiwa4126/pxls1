@@ -25,9 +25,13 @@ func Ls(searchPath string) ([]string, error) {
 
 	hosts := make([]string, len(rc))
 
-	for i, v := range rc {
-		hosts[i] = stem(v)
+	j := 0
+	for _, v := range rc {
+		if strings.Index(v, "_i686.json") < 0 {
+			hosts[j] = stem(v)
+			j++
+		}
 	}
 
-	return isort(hosts), nil
+	return isort(hosts[:j]), nil
 }

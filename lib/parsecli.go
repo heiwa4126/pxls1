@@ -37,7 +37,7 @@ flags:`)
 		os.Exit(2)
 	}
 
-	jsonPath := "./testdata/1"
+	jsonPath := "./testdata/7"
 	outFile := "./Book1.xlsx"
 	if *yamlfmt {
 		outFile = "./updates_db.yaml"
