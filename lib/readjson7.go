@@ -3,7 +3,6 @@ package lib
 import (
 	"bufio"
 	"encoding/json"
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -63,7 +62,7 @@ func ReadJSON7(jsonFile string) ([]string, error) {
 		return nil, err
 	}
 
-	fmt.Printf("%+v\n", s2)
+	// fmt.Printf("%+v\n", s2)
 
 	m := make([]string, len(s)*2)
 	j := 0
