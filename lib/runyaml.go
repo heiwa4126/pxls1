@@ -27,7 +27,8 @@ func RunYAML(jsonDir string, yamlFile string) error {
 		if err2 != nil {
 			return err2
 		}
-		m[host] = pkgs
+
+		m[host] = PkgSlice2StringSlice(pkgs)
 	}
 
 	// object to YAML

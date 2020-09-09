@@ -50,7 +50,7 @@ func readI686Json(i686File string) (map[string]int, error) {
 }
 
 // ReadJSON7 は ....
-func ReadJSON7(jsonFile string) ([]string, error) {
+func ReadJSON7(jsonFile string) ([]Pkg, error) {
 
 	s, err := readMainJson(jsonFile)
 	if err != nil {
@@ -64,25 +64,28 @@ func ReadJSON7(jsonFile string) ([]string, error) {
 
 	// fmt.Printf("%+v\n", s2)
 
-	m := make([]string, len(s)*2)
+	m := make([]Pkg, len(s)*2)
 	j := 0
 	for _, v := range s {
 		x := strings.Index(v[1], " from ")
 		if x > 0 {
-			version := v[1][0:x]
-
-			m[j] = v[0] + "-" + version
+			ver, arch, err := VerArch(v[1][0:x])
+			if err != nil {
+				return nil, err
+			}
+			p := Pkg{v[0], ver, arch}
+			m[j] = p
 			j++
 
 			// i686 special
-			_, ok := s2[v[0]]
-			if ok && strings.Index(version, ".x86_64") >= 0 {
-				v686 := version[:len(version)-7] + ".i686"
-				m[j] = v[0] + "-" + v686
+			_, ok := s2[p.Name]
+			if ok && p.Arch == "x86_64" {
+				m[j] = p
+				m[j].Arch = "i686"
 				j++
 			}
 		}
 	}
 
-	return isort(m[:j]), nil
+	return psort(m[:j]), nil
 }

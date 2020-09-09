@@ -16,10 +16,10 @@ func NewExcel1() *Excel1 {
 	return &Excel1{excelize.NewFile()}
 }
 
-func (e1 *Excel1) AddHost(host string, packages []string) {
+func (e1 *Excel1) AddHost(host string, packages []Pkg) {
 	e1.f.NewSheet(host)
 	for i, v := range packages {
-		e1.f.SetCellValue(host, fmt.Sprintf("A%d", i+1), v)
+		e1.f.SetCellValue(host, fmt.Sprintf("A%d", i+1), v.ToString())
 	}
 }
 
