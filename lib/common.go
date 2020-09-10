@@ -32,7 +32,7 @@ func isort(a []string) []string {
 	return a
 }
 
-// 文字列スライスの大文字小文字無視のソート
+// Pkgスライスのソート(大文字小文字を見る)
 func psort(a []Pkg) []Pkg {
 	sort.Slice(a, func(i, j int) bool { return a[i].Compare(&a[j]) < 0 })
 	return a

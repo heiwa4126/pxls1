@@ -8,7 +8,7 @@ type Pkg struct {
 	Arch    string
 }
 
-func (p *Pkg) ToString() string {
+func (p *Pkg) String() string {
 	return p.Name + "-" + p.Version + "." + p.Arch
 }
 
@@ -33,7 +33,7 @@ func PkgSlice2StringSlice(ps []Pkg) []string {
 	ss := make([]string, len(ps))
 
 	for i, v := range ps {
-		ss[i] = v.ToString()
+		ss[i] = v.String()
 	}
 
 	return ss
