@@ -32,8 +32,16 @@ GO111MODULE=on go get -u github.com/heiwa4126/pxls1
 # 使い方
 
 ```
-pxls1 [-h|-v] <JSONファイルのあるパス> <出力するExcelファイル>
+pxls1 <JSONファイルのあるパス> <出力するExcelファイル>
+pxls1 -y <JSONファイルのあるパス> <出力するYAMLファイル>
+pxls1 [-h|-v]
 ```
+
+flags:
+- -h    ヘルプの表示
+- -v    バージョンの表示
+- -y    YAMLモード
+
 
 # なんでGoで書いてあるの?
 
