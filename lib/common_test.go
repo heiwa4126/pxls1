@@ -2,6 +2,7 @@ package lib
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -18,11 +19,11 @@ func TestCommon1(t *testing.T) {
 
 	fmt.Printf("'%s','%s'\n", p1, p2)
 
-	assert.True(t, TailIs(s1, ".x86_64"), "TailIs() BUG")
-	assert.False(t, TailIs(s1, ".noarch"), "TailIs() BUG")
+	assert.True(t, strings.HasSuffix(s1, ".x86_64"), "strings.HasSuffix() BUG")
+	assert.False(t, strings.HasSuffix(s1, ".noarch"), "strings.HasSuffix() BUG")
 
-	assert.False(t, TailIs(s2, ".x86_64"), "TailIs() BUG")
-	assert.True(t, TailIs(s2, ".noarch"), "TailIs() BUG")
+	assert.False(t, strings.HasSuffix(s2, ".x86_64"), "strings.HasSuffix() BUG")
+	assert.True(t, strings.HasSuffix(s2, ".noarch"), "strings.HasSuffix() BUG")
 
 	for _, p := range []Pkg{p1, p2} {
 		namever, arch, err := VerArch(p.String())
@@ -33,4 +34,5 @@ func TestCommon1(t *testing.T) {
 			namever == p.NameVer() && arch == p.Arch,
 			"VerArch() BUG. version='%s', arch='%s'", namever, arch)
 	}
+
 }

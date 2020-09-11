@@ -1,5 +1,7 @@
 #!/bin/sh -ex
 cd $(dirname $0)/..
+BIN=$(basename $PWD)
+
 go mod tidy
 go fmt ./...
 
@@ -17,4 +19,6 @@ VER=$(git tag --sort=-v:refname | grep '^v' | head -1)
 REV=$(git rev-parse --short HEAD)
 go build -ldflags "-s -w -X main.Version=$VER -X main.Revision=$REV" -trimpath
 
-upx pxls1
+# omake
+go version -m "$BIN"
+upx "$BIN"

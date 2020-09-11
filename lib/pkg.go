@@ -8,15 +8,15 @@ type Pkg struct {
 	Arch    string
 }
 
-func (p *Pkg) String() string {
+func (p Pkg) String() string {
 	return p.Name + "-" + p.Version + "." + p.Arch
 }
 
-func (p *Pkg) NameVer() string {
+func (p Pkg) NameVer() string {
 	return p.Name + "-" + p.Version
 }
 
-func (p *Pkg) Compare(p2 *Pkg) int {
+func (p Pkg) Compare(p2 *Pkg) int {
 	rc := strings.Compare(p.Name, p2.Name)
 	if rc != 0 {
 		return rc

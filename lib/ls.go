@@ -27,7 +27,7 @@ func Ls(searchPath string) ([]string, error) {
 
 	j := 0
 	for _, v := range rc {
-		if !TailIs(v, "_i686.json") {
+		if !strings.HasSuffix(v, "_i686.json") {
 			hosts[j] = stem(v)
 			j++
 		}
