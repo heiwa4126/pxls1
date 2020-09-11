@@ -1,5 +1,7 @@
 package lib
 
+// parse commandline
+
 import (
 	"flag"
 	"fmt"
@@ -16,8 +18,8 @@ func ParseCli(ver string, rev string) (string, string, bool) {
 	flag.Usage = func() {
 		fmt.Println(`JSONの変換
 Usage:
- pxls1 [JSON files directory] [output Excel file]
- pxls1 -y [JSON files directory] [output update db file (YAML)]
+ pxls1 <JSON files directory> <output Excel file(xlsx)>
+ pxls1 -y <JSON files directory> <output update db file (YAML)>
  pxls1 [flags]
 
 flags:`)

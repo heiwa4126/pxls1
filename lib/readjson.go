@@ -33,7 +33,7 @@ func ReadJSON(jsonFile string) ([]string, error) {
 	j := 0
 	// remove "Downloaded: "
 	for _, v := range m {
-		if strings.Index(v, "Downloaded: ") == 0 {
+		if strings.HasPrefix(v, "Downloaded: ") {
 			m[j] = v[12:]
 			j++
 		}

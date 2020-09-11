@@ -22,7 +22,7 @@ func (e1 *Excel1) AddHost(host string, packages []Pkg) {
 		e1.f.SetCellValue(host, fmt.Sprintf("A%d", i+1), v.Name)
 		e1.f.SetCellValue(host, fmt.Sprintf("B%d", i+1), v.Version)
 		e1.f.SetCellValue(host, fmt.Sprintf("C%d", i+1), v.Arch)
-		e1.f.SetCellValue(host, fmt.Sprintf("D%d", i+1), v.String())
+		e1.f.SetCellValue(host, fmt.Sprintf("D%d", i+1), v.ToString())
 	}
 }
 
