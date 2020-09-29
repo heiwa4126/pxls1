@@ -1,4 +1,4 @@
-package lib
+package cli
 
 // parse commandline
 
@@ -8,12 +8,25 @@ import (
 	"os"
 )
 
-func ParseCli(ver string, rev string) (string, string, bool) {
+var (
+	// Version ...
+	Version string = "v9.9.9"
+	// Revision ...
+	Revision string = "9999999"
+
+	JsonPath string = "./testdata/7"
+
+	OutFile string = "./Book1.xlsx"
+
+	YamlFmt *bool
+)
+
+func ParseCli() {
 
 	// flags
 	help := flag.Bool("h", false, "ヘルプの表示")
 	version := flag.Bool("v", false, "バージョンの表示")
-	yamlfmt := flag.Bool("y", false, "YAMLモード")
+	YamlFmt = flag.Bool("y", false, "YAMLモード")
 
 	flag.Usage = func() {
 		fmt.Println(`JSONの変換
@@ -30,7 +43,7 @@ flags:`)
 	args := flag.Args()
 
 	if *version {
-		fmt.Printf("pxls1 %s (%s)\n", ver, rev)
+		fmt.Println("pxls1 " + Version + " (" + Revision + ")")
 		os.Exit(2)
 	}
 
@@ -39,18 +52,14 @@ flags:`)
 		os.Exit(2)
 	}
 
-	jsonPath := "./testdata/7"
-	outFile := "./Book1.xlsx"
-	if *yamlfmt {
-		outFile = "./updates_db.yaml"
+	if *YamlFmt {
+		OutFile = "./updates_db.yaml"
 	}
 
 	if len(args) >= 1 {
-		jsonPath = args[0]
+		JsonPath = args[0]
 	}
 	if len(args) >= 2 {
-		outFile = args[1]
+		OutFile = args[1]
 	}
-
-	return jsonPath, outFile, *yamlfmt
 }
