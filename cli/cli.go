@@ -14,7 +14,7 @@ var (
 	// Revision ...
 	Revision string = "9999999"
 
-	JsonPath string = "./testdata/7"
+	JsonPath string = "./test/7"
 
 	OutFile string = "./Book1.xlsx"
 
@@ -43,7 +43,7 @@ flags:`)
 	args := flag.Args()
 
 	if *version {
-		fmt.Println("pxls1 " + Version + " (" + Revision + ")")
+		fmt.Println("pxls1 v" + Version + " (" + Revision + ")")
 		os.Exit(2)
 	}
 

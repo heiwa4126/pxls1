@@ -7,7 +7,7 @@ import (
 )
 
 func TestLsErr1(t *testing.T) {
-	rc, err := Ls("../testdata/notexists")
+	rc, err := Ls("../test/notexists")
 	if err != nil {
 		// 存在しないパスでもエラーにはならない
 		t.Fatal(err)
@@ -20,7 +20,7 @@ func TestLsErr1(t *testing.T) {
 
 func TestLs1(t *testing.T) {
 	wants := []string{"c7", "host1", "R8"}
-	rc, err := Ls("../testdata/1")
+	rc, err := Ls("../test/1")
 
 	if err != nil {
 		t.Fatal(err)

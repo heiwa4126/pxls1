@@ -18,7 +18,7 @@ func TestReadJSON1(t *testing.T) {
 		"package07",
 	}
 
-	rc, err := ReadJSON("../testdata/1/host1.json")
+	rc, err := ReadJSON("../test/1/host1.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,7 +31,7 @@ func TestReadJSON1(t *testing.T) {
 }
 
 func TestReadJSON2(t *testing.T) {
-	rc, err := ReadJSON("../testdata/1/c7.json")
+	rc, err := ReadJSON("../test/1/c7.json")
 	if err != nil {
 		log.Fatal(err)
 	}

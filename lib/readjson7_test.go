@@ -7,7 +7,7 @@ import (
 )
 
 func TestReadJSON7_1(t *testing.T) {
-	rc, err := ReadJSON7("../testdata/7/web02.json")
+	rc, err := ReadJSON7("../test/7/web02.json")
 	if err != nil {
 		log.Fatal(err)
 	}

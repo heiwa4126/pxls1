@@ -125,4 +125,5 @@ inc/
 
 pxls1
 *.xlsx
+*.bak
 updates_db.yaml
