@@ -67,6 +67,11 @@ func ReadJSON7(jsonFile string) ([]Pkg, error) {
 	m := make([]Pkg, len(s)*2)
 	j := 0
 	for _, v := range s {
+		// exclude slony1 package
+		if strings.HasPrefix(v[0], "slony1") {
+			continue
+		}
+
 		x := strings.Index(v[1], " from ")
 		if x > 0 {
 			ver, arch, err := VerArch(v[1][0:x])
