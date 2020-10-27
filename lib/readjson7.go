@@ -68,7 +68,8 @@ func ReadJSON7(jsonFile string) ([]Pkg, error) {
 	j := 0
 	for _, v := range s {
 		// exclude slony1 package
-		if strings.HasPrefix(v[0], "slony1") {
+		if strings.HasPrefix(v[0], "slony1") ||
+			strings.HasPrefix(v[0], "postgresql94") {
 			continue
 		}
 
