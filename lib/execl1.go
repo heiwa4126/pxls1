@@ -18,11 +18,18 @@ func NewExcel1() *Excel1 {
 
 func (e1 *Excel1) AddHost(host string, packages []Pkg) {
 	e1.f.NewSheet(host)
+	e1.f.SetCellValue(host, "A1", "パッケージ名")
+	e1.f.SetCellValue(host, "B1", "アーキテクチャー")
+	e1.f.SetCellValue(host, "C1", "現行バージョン")
+	e1.f.SetCellValue(host, "D1", "更新バージョン(2021/07/02 10:00時点)")
+
 	for i, v := range packages {
-		e1.f.SetCellValue(host, fmt.Sprintf("A%d", i+1), v.Name)
-		e1.f.SetCellValue(host, fmt.Sprintf("B%d", i+1), v.Version)
-		e1.f.SetCellValue(host, fmt.Sprintf("C%d", i+1), v.Arch)
-		e1.f.SetCellValue(host, fmt.Sprintf("D%d", i+1), v.ToString())
+		j := i + 2
+		e1.f.SetCellValue(host, fmt.Sprintf("A%d", j), v.Name)
+		e1.f.SetCellValue(host, fmt.Sprintf("B%d", j), v.Arch)
+		e1.f.SetCellValue(host, fmt.Sprintf("C%d", j), "test")
+		e1.f.SetCellValue(host, fmt.Sprintf("D%d", j), v.Version)
+		// e1.f.SetCellValue(host, fmt.Sprintf("D%d", j), v.ToString())
 	}
 }
 
