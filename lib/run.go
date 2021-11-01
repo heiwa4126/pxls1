@@ -1,6 +1,10 @@
 package lib
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/heiwa4126/pxls1/cli"
+)
 
 // Run は ....
 func Run(jsonDir string, excelFile string) error {
@@ -22,7 +26,12 @@ func Run(jsonDir string, excelFile string) error {
 		if err2 != nil {
 			return err2
 		}
-		e1.AddHost(host, pkgs)
+		pkgdb, err2 := CsvRead(*cli.CsvPath + "/" + host + ".csv")
+		if err2 != nil {
+			return err2
+		}
+
+		e1.AddHost(host, pkgs, pkgdb)
 	}
 
 	// write Excel file

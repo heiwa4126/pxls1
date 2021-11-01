@@ -32,7 +32,7 @@ GO111MODULE=on go get -u github.com/heiwa4126/pxls1
 # 使い方
 
 ```
-pxls1 <JSONファイルのあるパス> <出力するExcelファイル>
+pxls1 <JSONファイルのあるパス> <出力するExcelファイル> -r <rpmqa_csvのパス>
 pxls1 -y <JSONファイルのあるパス> <出力するYAMLファイル>
 pxls1 [-h|-v]
 ```
@@ -41,6 +41,16 @@ flags:
 - -h    ヘルプの表示
 - -v    バージョンの表示
 - -y    YAMLモード
+- -r    rpmqa_csvのパス
+
+
+# 追加機能
+
+## 2021-11
+
+Excelの出力に、以前のバージョンがほしいというので追加した。
+`-r`オプションで`ap rpmqa_csv`の出力パスを指定してください。
+
 
 
 # なんでGoで書いてあるの?

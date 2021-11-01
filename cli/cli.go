@@ -15,10 +15,9 @@ var (
 	Revision string = "9999999"
 
 	JsonPath string = "./test/7"
-
-	OutFile string = "./Book1.xlsx"
-
-	YamlFmt *bool
+	OutFile  string = "./Book1.xlsx"
+	YamlFmt  *bool
+	CsvPath  *string
 )
 
 func ParseCli() {
@@ -27,11 +26,12 @@ func ParseCli() {
 	help := flag.Bool("h", false, "ヘルプの表示")
 	version := flag.Bool("v", false, "バージョンの表示")
 	YamlFmt = flag.Bool("y", false, "YAMLモード")
+	CsvPath = flag.String("r", "/home/heiwa/works/ansible/t2/var/rpmqa_csv", "rpmqa_csvのパス")
 
 	flag.Usage = func() {
 		fmt.Println(`JSONの変換
 Usage:
- pxls1 <JSON files directory> <output Excel file(xlsx)>
+ pxls1 <JSON files directory> <output Excel file(xlsx) -r <rpmqa CSVPATH>>
  pxls1 -y <JSON files directory> <output update db file (YAML)>
  pxls1 [flags]
 
