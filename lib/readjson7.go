@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"encoding/json"
 	"io"
+	"io/ioutil"
+	"log"
 	"os"
 	"strings"
 )
@@ -47,6 +49,18 @@ func readI686Json(i686File string) (map[string]int, error) {
 	}
 
 	return st, nil
+}
+
+// ReadLogFile は 指定されたファイル(実はタイムスタンプが入ってるだけ)を読み込む
+func ReadLogFile(logfile string) (string, error) {
+	bs, err := ioutil.ReadFile(logfile)
+	if err != nil {
+		// return "", err
+		log.Printf("Log file %s not found.", logfile)
+		return "unknown", nil
+	}
+
+	return string(bs), nil
 }
 
 // ReadJSON7 は ....

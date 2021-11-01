@@ -17,12 +17,12 @@ func NewExcel1() *Excel1 {
 	return &Excel1{excelize.NewFile()}
 }
 
-func (e1 *Excel1) AddHost(host string, packages []Pkg, pkgdb PkgDB) {
+func (e1 *Excel1) AddHost(host string, packages []Pkg, pkgdb PkgDB, timestamp string) {
 	e1.f.NewSheet(host)
 	e1.f.SetCellValue(host, "A1", "パッケージ名")
 	e1.f.SetCellValue(host, "B1", "アーキテクチャー")
 	e1.f.SetCellValue(host, "C1", "現行バージョン")
-	e1.f.SetCellValue(host, "D1", "更新バージョン(2021/07/02 10:00時点)")
+	e1.f.SetCellValue(host, "D1", fmt.Sprintf("更新バージョン(%s時点)", timestamp))
 
 	for i, v := range packages {
 		j := i + 2

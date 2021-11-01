@@ -26,12 +26,16 @@ func Run(jsonDir string, excelFile string) error {
 		if err2 != nil {
 			return err2
 		}
+		timestamp, err2 := ReadLogFile(Host2LogFile(host, jsonDir))
+		if err2 != nil {
+			return err2
+		}
 		pkgdb, err2 := CsvRead(*cli.CsvPath + "/" + host + ".csv")
 		if err2 != nil {
 			return err2
 		}
 
-		e1.AddHost(host, pkgs, pkgdb)
+		e1.AddHost(host, pkgs, pkgdb, timestamp)
 	}
 
 	// write Excel file

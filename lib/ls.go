@@ -14,6 +14,10 @@ func Host2File(host string, base string) string {
 	return filepath.Join(base, host+".json")
 }
 
+func Host2LogFile(host string, base string) string {
+	return filepath.Join(base, host+".log")
+}
+
 // Ls は ....
 func Ls(searchPath string) ([]string, error) {
 

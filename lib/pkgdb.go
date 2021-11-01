@@ -42,7 +42,7 @@ func CsvRead(csvfile string) (PkgDB, error) {
 		// fmt.Printf("%#v\n", row)
 		pkg := row[0]
 		arch := row[3]
-		ver := row[1] + "." + row[2]
+		ver := row[1] + "-" + row[2]
 
 		// fmt.Printf("%s,%s,%s\n", pkg, arch, ver)
 		m[NewPkgDBKey(pkg, arch)] = ver
