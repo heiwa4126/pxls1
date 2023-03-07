@@ -24,9 +24,7 @@ builds:
       - -X github.com/heiwa4126/pxls1/cli.Version={{.Version}}
       - -X github.com/heiwa4126/pxls1/cli.Revision={{.ShortCommit}}
     hooks:
-        post:
-          upx
-            dist/pxls1_linux_amd64/pxls1
+        post: upx dist/pxls1_linux_amd64_v1/pxls1
 archives:
   - name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     replacements:
