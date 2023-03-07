@@ -18,7 +18,7 @@ func (p PkgDB) Ver(pkg, arch string) string {
 	return p[NewPkgDBKey(pkg, arch)]
 }
 
-/// CSVファイルを読んで、mapにして返す。
+// / CSVファイルを読んで、mapにして返す。
 func CsvRead(csvfile string) (PkgDB, error) {
 	m := make(PkgDB)
 	fp, err := os.Open(csvfile)
