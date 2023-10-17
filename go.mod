@@ -1,11 +1,11 @@
 module github.com/heiwa4126/pxls1
 
-go 1.19
+go 1.21
 
 require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
-	github.com/goccy/go-yaml v1.10.0
-	github.com/stretchr/testify v1.6.1
+	github.com/goccy/go-yaml v1.11.2
+	github.com/stretchr/testify v1.8.4
 )
 
 require (
@@ -19,5 +19,5 @@ require (
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

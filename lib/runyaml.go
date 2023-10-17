@@ -2,7 +2,7 @@ package lib
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 
 	"github.com/goccy/go-yaml"
 )
@@ -38,5 +38,5 @@ func RunYAML(jsonDir string, yamlFile string) error {
 	}
 
 	// write YAML file
-	return ioutil.WriteFile(yamlFile, bytes, 0644)
+	return os.WriteFile(yamlFile, bytes, 0644)
 }
