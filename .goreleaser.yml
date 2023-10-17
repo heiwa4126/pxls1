@@ -24,17 +24,28 @@ builds:
       - -X github.com/heiwa4126/pxls1/cli.Version={{.Version}}
       - -X github.com/heiwa4126/pxls1/cli.Revision={{.ShortCommit}}
     hooks:
-        post: upx dist/pxls1_linux_amd64_v1/pxls1
+      post: upx dist/pxls1_linux_amd64_v1/pxls1
 archives:
-  - name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+  - format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
     replacements:
       darwin: darwin
       linux: linux
       windows: windows
       386: i386
       amd64: x86_64
-    format_overrides:
-      - goos: windows
-        format: zip
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- if eq .Os "freebsd" }}FreeBSD
+      {{- else }}{{ title .Os }}{{ end }}_
+      {{- if eq .Arch "amd64" }}64bit
+      {{- else if eq .Arch "386" }}32bit
+      {{- else if eq .Arch "arm64" }}ARM64
+      {{- else if eq .Arch "riscv64" }}RISCV
+      {{- else }}{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ end }}
+
 release:
   prerelease: auto
